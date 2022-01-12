@@ -41,6 +41,11 @@ public class UserController {
         return _userService.getUserById(userId);
     }
 
+    @GetMapping("/api/users/online")
+    public List<User> handleGetOnlineUsers() {
+        return _userService.getOnlineUsers();
+    }
+
     //-------------------------------------------------------------------------
     //-------------------------------------------------------------------------
     private UserService _userService;

@@ -41,7 +41,7 @@ public class User {
         return lastLoggedIn;
     }
 
-    public boolean isOnline() {
+    public boolean getIsOnline() {
         return isOnline;
     }
 

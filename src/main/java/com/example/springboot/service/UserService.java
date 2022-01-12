@@ -43,6 +43,18 @@ public class UserService {
          }
     }
 
+    public List<User> getOnlineUsers() {
+        List<User> onlineUsers = new ArrayList<User>();
+
+        _userRepository.findAll().forEach( user -> {
+            if (user.getIsOnline()) {
+                onlineUsers.add(user);
+            }
+        });
+
+        return onlineUsers;
+    }
+
     //-------------------------------------------------------------------------
     //-------------------------------------------------------------------------
     private UserRepository _userRepository;
