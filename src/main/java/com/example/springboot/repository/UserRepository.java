@@ -9,4 +9,6 @@ import java.util.List;
 public interface UserRepository extends JpaRepository <User,Long> {
 
     List<User> findByLastName(String lastName);
+
+    List<User> findByIsOnline(boolean online);
 }

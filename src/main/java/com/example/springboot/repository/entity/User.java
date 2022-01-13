@@ -1,11 +1,20 @@
 package com.example.springboot.repository.entity;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Date;
+import java.util.Collections;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.FetchType;
+import javax.persistence.CascadeType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -61,15 +70,51 @@ public class User {
         this.isOnline = online;
     }
 
+    public List<Room> getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(List<Room> rooms) {
+
+    }
+
+    public void addRoom(Room room) {
+        this.rooms.add(room);
+        room.getUsers().add(this);
+    }
+
+    public void removeRoom(Room room) {
+        this.rooms.remove(room);
+        room.getUsers().remove(this);
+    }
+
     //-------------------------------------------------------------------------
     //-------------------------------------------------------------------------
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
+
     private String firstName;
+
     private String lastName;
+
     @CreationTimestamp
     private Date created;
+
     private Date lastLoggedIn;
+
     private boolean isOnline;
+
+    @ManyToMany(
+        fetch = FetchType.EAGER, 
+        cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
+    @JoinTable(
+        name = "user_rooms",
+        joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+        inverseJoinColumns = @JoinColumn(name ="room_id", referencedColumnName = "id")
+    )
+    private List<Room> rooms = new ArrayList<Room>();
 }
