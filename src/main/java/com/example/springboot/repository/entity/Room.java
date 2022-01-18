@@ -83,8 +83,7 @@ public class Room {
         mappedBy = "rooms",
         fetch = FetchType.EAGER, 
         cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE)
+            CascadeType.ALL})
     private List<User> users = new ArrayList<User>();
 
     private ConcurrentLinkedDeque<Message> messages =

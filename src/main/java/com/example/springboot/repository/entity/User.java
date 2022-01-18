@@ -15,6 +15,9 @@ import javax.persistence.CascadeType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -75,17 +78,17 @@ public class User {
     }
 
     public void setRooms(List<Room> rooms) {
-
+        for(Room room : rooms) {
+            addRoom(room);
+        }
     }
 
     public void addRoom(Room room) {
         this.rooms.add(room);
-        room.getUsers().add(this);
     }
 
     public void removeRoom(Room room) {
         this.rooms.remove(room);
-        room.getUsers().remove(this);
     }
 
     //-------------------------------------------------------------------------
@@ -116,5 +119,7 @@ public class User {
         joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
         inverseJoinColumns = @JoinColumn(name ="room_id", referencedColumnName = "id")
     )
+    @JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="id")
+    @JsonIdentityReference(alwaysAsId=true)
     private List<Room> rooms = new ArrayList<Room>();
 }
