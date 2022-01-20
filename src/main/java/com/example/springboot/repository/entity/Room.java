@@ -8,22 +8,19 @@ import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.stream.Stream;
 import java.util.stream.Collectors;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.FetchType;
-import javax.persistence.CascadeType;
+import com.example.springboot.repository.entity.User;
 
-@Entity
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "rooms")
 public class Room {
 
     public Room() {
         super();
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
@@ -72,18 +69,12 @@ public class Room {
     //-------------------------------------------------------------------------
     //-------------------------------------------------------------------------
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private Long id;
+    private String id;
 
     private String name;
 
     private boolean isPrivate;
 
-    @ManyToMany(
-        mappedBy = "rooms",
-        fetch = FetchType.EAGER, 
-        cascade = {
-            CascadeType.ALL})
     private List<User> users = new ArrayList<User>();
 
     private ConcurrentLinkedDeque<Message> messages =

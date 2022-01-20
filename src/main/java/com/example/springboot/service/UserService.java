@@ -32,7 +32,7 @@ public class UserService {
         _userRepository.save(newUser);
     }
 
-    public User getUserById(Long id) {
+    public User getUserById(String id) {
         if(_userRepository.findById(id).isPresent()) {
             return _userRepository.findById(id).get();
         } else {
@@ -40,8 +40,8 @@ public class UserService {
         }
     }
 
-    public List<User> getOnlineUsers() {
-        return _userRepository.findByIsOnline(true);
+    public List<User> getUsersFilteredByOnline(boolean isonline) {
+        return _userRepository.findByIsOnline(isonline);
     }
 
     //-------------------------------------------------------------------------

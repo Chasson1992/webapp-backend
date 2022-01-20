@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.example.springboot.service.UserService;
@@ -36,14 +36,14 @@ public class UserController {
         _userService.insertUser(newUser);
     }
 
-    @GetMapping("/api/users/{id}")
-    public User handleGetUserById(@PathVariable("id") Long userId) {
+    @GetMapping("/api/users/search/id")
+    public User handleGetUserById(@RequestParam("id") String userId) {
         return _userService.getUserById(userId);
     }
 
-    @GetMapping("/api/users/online")
-    public List<User> handleGetOnlineUsers() {
-        return _userService.getOnlineUsers();
+    @GetMapping("/api/users/search/online")
+    public List<User> handleGetUsersByOnline(@RequestParam("online") Boolean isOnline) {
+        return _userService.getUsersFilteredByOnline(isOnline);
     }
 
     //-------------------------------------------------------------------------
