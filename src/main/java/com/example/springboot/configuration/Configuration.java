@@ -1,4 +1,4 @@
-package com.example.springboot.configuration;
+package com.logical.bork.configuration;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

@@ -8,11 +8,11 @@
 		<version>2.5.8</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
-	<artifactId>spring-boot</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-boot</name>
-	<description>Demo project for Spring Boot</description>
+	<groupId>com.logical</groupId>
+	<artifactId>bork</artifactId>
+	<version>1</version>
+	<name>Bork!</name>
+	<description>Discord but we're all dogs</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>

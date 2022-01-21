@@ -1,6 +1,7 @@
-package com.example.springboot.service;
+package com.logical.bork.service;
 
 import java.util.List;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,10 +9,11 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.http.HttpStatus;
 
-import com.example.springboot.repository.RoomRepository;
-import com.example.springboot.repository.entity.Room;
-import com.example.springboot.repository.UserRepository;
-import com.example.springboot.repository.entity.User;
+import com.logical.bork.repository.RoomRepository;
+import com.logical.bork.repository.entity.Room;
+import com.logical.bork.repository.UserRepository;
+import com.logical.bork.repository.entity.User;
+import com.logical.bork.repository.entity.Message;
 
 @Service
 @Transactional
@@ -61,6 +63,12 @@ public class RoomService {
         } else {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No user found for id => " + userId);
         }
+    }
+
+    public void createNewMessage(String roomId, Message message) {
+        Room room = getRoomById(roomId);
+        room.insertMessage(message);
+        _roomRepository.save(room);
     }
 
     //-------------------------------------------------------------------------

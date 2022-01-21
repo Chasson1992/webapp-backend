@@ -1,4 +1,4 @@
-package com.example.springboot.repository.entity;
+package com.logical.bork.repository.entity;
 
 import java.util.Date;
 
@@ -8,8 +8,9 @@ public class Message {
         super();
     }
 
-    public Message(String text) {
+    public Message(String text, Date sentTime) {
         this.text = text;
+        this.sentTimestamp = sentTime;
     }
 
     public String getText() {

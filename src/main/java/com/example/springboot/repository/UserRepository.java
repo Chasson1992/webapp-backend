@@ -1,6 +1,6 @@
-package com.example.springboot.repository;
+package com.logical.bork.repository;
 
-import com.example.springboot.repository.entity.User;
+import com.logical.bork.repository.entity.User;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 

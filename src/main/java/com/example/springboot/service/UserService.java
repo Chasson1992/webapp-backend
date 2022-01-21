@@ -1,4 +1,4 @@
-package com.example.springboot.service;
+package com.logical.bork.service;
 
 import java.util.List;
 
@@ -8,8 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.http.HttpStatus;
 
-import com.example.springboot.repository.UserRepository;
-import com.example.springboot.repository.entity.User;
+import com.logical.bork.repository.UserRepository;
+import com.logical.bork.repository.entity.User;
 
 @Service
 @Transactional

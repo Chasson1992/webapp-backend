@@ -1,4 +1,4 @@
-package com.example.springboot.repository.entity;
+package com.logical.bork.repository.entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.stream.Stream;
 import java.util.stream.Collectors;
 
-import com.example.springboot.repository.entity.User;
+import com.logical.bork.repository.entity.User;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

@@ -1,11 +1,11 @@
-package com.example.springboot.repository.entity;
+package com.logical.bork.repository.entity;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
 import java.util.Collections;
 
-import com.example.springboot.repository.entity.Room;
+import com.logical.bork.repository.entity.Room;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

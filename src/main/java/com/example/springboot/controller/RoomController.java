@@ -1,4 +1,4 @@
-package com.example.springboot.controller;
+package com.logical.bork.controller;
 
 import java.util.List;
 
@@ -10,9 +10,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.example.springboot.service.RoomService;
-import com.example.springboot.repository.entity.Room;
-import com.example.springboot.repository.entity.User;
+import com.logical.bork.service.RoomService;
+import com.logical.bork.repository.entity.Room;
+import com.logical.bork.repository.entity.User;
+import com.logical.bork.repository.entity.Message;
 
 @RestController
 public class RoomController {
@@ -41,6 +42,10 @@ public class RoomController {
         _roomService.addUserToRoom(roomId, userId);
     }
 
+    @PostMapping("/api/rooms/addMessage")
+    public void handleCreateNewMessage(@RequestParam("roomId") String roomId, @RequestBody Message message) {
+        _roomService.createNewMessage(roomId, message);
+    }
 
     @GetMapping("/api/rooms")
     public List<Room> handleGetAllDiscoverableRooms() {

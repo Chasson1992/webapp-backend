@@ -1,4 +1,4 @@
-package com.example.springboot.service;
+package com.logical.bork.service;
 
 import org.junit.jupiter.api.Test;
 

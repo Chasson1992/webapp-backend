@@ -1,4 +1,4 @@
-package com.example.springboot.controller;
+package com.logical.bork.controller;
 
 import java.util.List;
 
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.example.springboot.service.UserService;
-import com.example.springboot.repository.entity.User;
+import com.logical.bork.service.UserService;
+import com.logical.bork.repository.entity.User;
 
 @RestController
 public class UserController {

@@ -1,10 +1,10 @@
-package com.example.springboot;
+package com.logical.bork;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
-import com.example.springboot.configuration.Configuration;
+import com.logical.bork.configuration.Configuration;
 
 @SpringBootApplication
 @EnableConfigurationProperties(Configuration.class)
