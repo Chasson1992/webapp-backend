@@ -8,14 +8,26 @@
 		<version>2.5.8</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+
 	<groupId>com.logical</groupId>
+
 	<artifactId>bork</artifactId>
+
 	<version>1</version>
+
 	<name>Bork!</name>
+
 	<description>Discord but we're all dogs</description>
+
 	<properties>
+
 		<java.version>11</java.version>
+		<frontend-src-dir>${project.basedir}/src/main/client</frontend-src-dir>
+		<node.version>v14.15.4</node.version>
+        <frontend-maven-plugin.version>1.7.6</frontend-maven-plugin.version>
+
 	</properties>
+
 	<dependencies>
 
 		<!-- Spring Boot Web -->
@@ -38,15 +50,74 @@
 			<version>2.6.2</version>
 		</dependency>
 
+		<!-- Web Socket -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-websocket</artifactId>
+			<version>2.6.3</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
 		<plugins>
+
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+			<!-- Build Client -->
+			<plugin>
+                <groupId>com.github.eirslett</groupId>
+                <artifactId>frontend-maven-plugin</artifactId>
+                <version>${frontend-maven-plugin.version}</version>
+
+                <configuration>
+                    <nodeVersion>${node.version}</nodeVersion>
+                    <workingDirectory>${frontend-src-dir}</workingDirectory>
+                    <installDirectory>${project.build.directory}</installDirectory>
+                </configuration>
+
+                <executions>
+					<execution>
+						<id>install node and npm</id>
+						<goals>
+							<goal>install-node-and-npm</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>npm install</id>
+						<goals>
+							<goal>npm</goal>
+						</goals>
+					</execution>
+                </executions>
+            </plugin>
+
+			<!-- Copy Client -->
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-client</id>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <phase>prepare-package</phase>
+                        <configuration>
+                            <outputDirectory>${project.build.outputDirectory}/static</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${frontend-src-dir}/build</directory>
+                                    <filtering>false</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+				</executions>
+            </plugin>
+
 		</plugins>
 	</build>
-
 </project>
