@@ -28,9 +28,7 @@ public class WebSocketController {
     @MessageMapping("/messages/{roomId}")
     @SendTo("/topic/messages/{roomId}")
     public Message index(@DestinationVariable("roomId") String roomId, Message message) {
-        System.out.println("Got message for :  " + roomId + " with contents " + message.getText());
-        _roomService.createNewMessage(roomId, message);
-        return message;
+        return _roomService.createNewMessage(roomId, message);
     }
 
     //-------------------------------------------------------------------------

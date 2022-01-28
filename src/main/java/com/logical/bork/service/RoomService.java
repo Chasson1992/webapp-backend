@@ -1,5 +1,7 @@
 package com.logical.bork.service;
 
+import java.lang.IllegalArgumentException;
+
 import java.util.List;
 import java.util.Date;
 
@@ -65,10 +67,16 @@ public class RoomService {
         }
     }
 
-    public void createNewMessage(String roomId, Message message) {
+    public Message createNewMessage(String roomId, Message message) {
         Room room = getRoomById(roomId);
         room.insertMessage(message);
-        _roomRepository.save(room);
+        try {
+            _roomRepository.save(room);
+            return message;
+        } catch (IllegalArgumentException exception) {
+            System.out.println("Expection in Room Service : " + exception.toString());
+            return null;
+        }
     }
 
     //-------------------------------------------------------------------------
