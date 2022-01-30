@@ -1,4 +1,4 @@
-package com.logical.bork.controller;
+package com.logical.bork.controller.rest;
 
 import java.util.List;
 
@@ -31,7 +31,7 @@ public class UserController {
         return _userService.getAllUsers();
     }
 
-    @PostMapping("/api/users/add")
+    @PostMapping("/api/users/create")
     public void handleAddUser(@RequestBody User newUser) {
         _userService.insertUser(newUser);
     }

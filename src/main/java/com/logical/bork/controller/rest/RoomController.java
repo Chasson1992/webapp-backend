@@ -1,4 +1,4 @@
-package com.logical.bork.controller;
+package com.logical.bork.controller.rest;
 
 import java.util.List;
 
@@ -40,11 +40,6 @@ public class RoomController {
     @PostMapping("/api/rooms/addUser")
     public void handleCreateRoom(@RequestParam("roomId") String roomId, @RequestParam("userId") String userId) {
         _roomService.addUserToRoom(roomId, userId);
-    }
-
-    @PostMapping("/api/rooms/addMessage")
-    public void handleCreateNewMessage(@RequestParam("roomId") String roomId, @RequestBody Message message) {
-        _roomService.createNewMessage(roomId, message);
     }
 
     @GetMapping("/api/rooms")

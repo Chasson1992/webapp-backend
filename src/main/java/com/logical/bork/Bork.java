@@ -8,9 +8,9 @@ import com.logical.bork.configuration.Configuration;
 
 @SpringBootApplication
 @EnableConfigurationProperties(Configuration.class)
-public class Application {
+public class Bork {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
+		SpringApplication.run(Bork.class, args);
 	}
 }

@@ -1,4 +1,4 @@
-package com.logical.bork.controller;
+package com.logical.bork.controller.websocket;
 
 import java.util.List;
 import java.util.ArrayList;
